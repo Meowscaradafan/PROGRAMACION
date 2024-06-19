@@ -53,8 +53,8 @@ while True:
 
         balascargador = cargasR1()
 
-
-        print(balascargador)
+          
+        
         while True:
 
             print(f"Tu vida es {vidajugador} y la vida de el apostador es {vidaapostador}")
@@ -99,27 +99,30 @@ while True:
             print(cargadorsistema)
 
             print("se han cargado",balasRo1,"balas\n")
-            def decision():
-             decision1 = input("1) disparar al apostador\n2) dispararte\n3) mostrar items ")
-             if decision1 == "1":
-                 disparosjugador.append(balascargador[0][0])
-                 if disparosjugador[0] == "real":
-                     vidaapostador = vidaapostador - 1
-                     print("bala real")
-                     print("tu vida",vidajugador,"apostador",vidaapostador)
-                 elif disparosjugador[0] == "falsa":
-                     print("bala falsa")
-             if decision1 == "2":
-                 disparosjugador.append(balascargador[0][0])
-                 if disparosjugador[0] == "real":
-                     vidajugador = vidajugador - 1
-                     print("bala real")
-                     print("tu vida",vidajugador,"apostador",vidaapostador)
-                 elif disparosjugador[0] == "falsa":
-                     print("bala falsa")
+        
+            decision1 = input("1) disparar al apostador\n2) dispararte\n3) mostrar items ")
+            
+            if decision1 == "1":
+                disparosjugador.append(balascargador[0][0])
+                if disparosjugador[0] == "real":
+                    vidaapostador = vidaapostador - 1
+                    print("bala real")
+                    print("tu vida",vidajugador,"apostador",vidaapostador)
+                elif disparosjugador[0] == "falsa":
+                    print("bala falsa")
+            if decision1 == "2":
+                disparosjugador.append(balascargador[0][0])
+                if disparosjugador[0] == "real":
+                    vidajugador = vidajugador - 1
+                    print("bala real")
+                    print("tu vida",vidajugador,"apostador",vidaapostador)
+                elif disparosjugador[0] == "falsa":
+                    print("bala falsa")
+                    
+                    print("tu vida:",vidajugador,"\nvida apostador:",vidaapostador)
+                    break
 
-             return vidajugador, vidaapostador
+             
 
 
-            vidajugador, vidaapostador = coinflipapostador(vidajugador, vidaapostador)
-            vidajugador, vidaapostador = decision(vidajugador, vidaapostador)
+            
