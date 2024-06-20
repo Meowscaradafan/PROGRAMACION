@@ -41,8 +41,11 @@ def cargas2():
     balascargador = [(bala, "real" if bala in cargadas else "falsa") for bala in balas]
     return balascargador  #aqui tendremos la lista de balas reales y falsas en orden de forma aleatoria en el sistema
 
-balascargadorordenadas = cargas2  #definimos la lista de balas en una variable
+balascargadorordenadas = cargas2()  #definimos la lista de balas en una variable
 print(balascargadorordenadas)
+
+
+
 #aca tendremos un codigo para los 3 items del juego
 
 bebida = "bebida"  #la bebida hara que al que este de turno pueda descargar una bala de la escopeta
@@ -80,10 +83,12 @@ print("las balas son las siguientes: ",cargass,"cargadas",falsas,"descargadas" )
 ronda1 = input("\n1)Disparar al apostador\n2)Dispararte\n3)Usar item\n")
 if ronda1 == "1":
     print("Disparas al apostador\n")
-    if balascargadorordenadas[0] == "1. real":
+    if balascargadorordenadas[0] == "(1, 'real)'":
         vidaapostador = vidaapostador - 1
         print("bala real")
-        
+        print("la vida del apostador es", vidaapostador)
+    elif balascargadorordenadas[0] == "(1, 'falsa')":
+        print("bala falsa")   
         
 
 
