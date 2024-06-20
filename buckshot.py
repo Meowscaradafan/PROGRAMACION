@@ -9,7 +9,7 @@ def coinflipapostador():
 def vidarandom():
     cantidad = [2,3,4]
     eleccion = random.choice(cantidad)
-    return eleccion    #aqui definimos la vida de los jugadores
+    return eleccion    #aqui definimos la vida de los jugadores, de manera random 2,3 o 4
 
 vida2jugadores = vidarandom()
 vidajugador = vida2jugadores
@@ -41,7 +41,7 @@ def cargas2():
     balascargador = [(bala, "real" if bala in cargadas else "falsa") for bala in balas]
     return balascargador  #aqui tendremos la lista de balas reales y falsas en orden de forma aleatoria en el sistema
 
-balascargadorordenadas = cargas2()  #definimos la lista de balas en una variable
+balascargadorordenadas = cargas2  #definimos la lista de balas en una variable
 print(balascargadorordenadas)
 #aca tendremos un codigo para los 3 items del juego
 
@@ -66,12 +66,7 @@ disparosronda = [] #esta variable hara que la ronda acabe cuando se llegue a la 
  #hacer un while para la ronda y break para cuando esta acabe cuando la vida de uno de los jugadores lleguen a 0
  #hacer un codigo para que cada vez que se dispare uno mismo, ya sea el jugador o apostador, este pueda disparar otra carga
 
-
-
-
-
-falsas = cargass - balaslistas
-
+falsas = int(balaslistas) - int(cargass)
 
 print("Bienvenido a buckshot roulette\n")
 
@@ -82,7 +77,7 @@ print(usuario, "tu vida es ",vidajugador,"y la del apostador", vidaapostador)
 print("\nprimera ronda, hay", balaslistas,"balas en el cargador")
 print("las balas son las siguientes: ",cargass,"cargadas",falsas,"descargadas" )
 
-ronda1 = input("\n1)Disparar al apostador\n2)Dispararte\n3)Usar item")
+ronda1 = input("\n1)Disparar al apostador\n2)Dispararte\n3)Usar item\n")
 if ronda1 == "1":
     print("Disparas al apostador\n")
     if balascargadorordenadas[0] == "1. real":
