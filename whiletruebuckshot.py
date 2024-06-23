@@ -3,8 +3,18 @@ import random    #para que funcionen los random.choice
 def coinflipapostador():
     if random.choice([1,2]) == 1:
         print("el apostador te dispara")
+        if balascargadorordenadas[0] == "real":
+            vidajugador = vidajugador - 1
+            print("bala real, tu vida es: ",vidajugador)
+            balascargadorordenadas.pop(0)
+        elif balascargadorordenadas[0] == "falsa":
+            print("bala falsa") 
+            balascargadorordenadas.pop(0)   
+
     elif random.choice([1,2]) == 2:
         print("el apostador se dispara")    #este es el 50/50 de el apostador, si decide disparar al jugador o a el
+        if balascargadorordenadas[0] == "real":
+            print("bala real, la vida del apostador es: ",vidaapostador)
 
 def vidarandom():
     cantidad = [2,3,4]
@@ -107,7 +117,9 @@ def ronda2():
 
      print("turno del apostador")
      
-          
+     coinflipapostador()
+
+
 
 
 
@@ -123,9 +135,13 @@ def ronda2():
          print("tu vida restante es ", vidajugador)
          balascargadorordenadas.pop(0)
 
-     elif balascargadorordenadas == "falsa": 
+     elif balascargadorordenadas[0] == "falsa": 
          print("bala falsa")
          balascargadorordenadas.pop(0)
+
+     print("turno del apostador")   
+
+     coinflipapostador()  
 
 while vidajugador > 0 and vidaapostador > 0:
 
