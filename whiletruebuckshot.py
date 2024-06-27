@@ -1,20 +1,41 @@
 import random    #para que funcionen los random.choice
 
 def coinflipapostador():
+    
+    global vidajugador
+    global vidaapostador
+    global balascargadorordenadas
+    
+    print("\nTurno del apostador")
+    
+    random.choice([1,2])
     if random.choice([1,2]) == 1:
-        print("el apostador te dispara")
+        print("\nel apostador te dispara")
         if balascargadorordenadas[0] == "real":
             vidajugador = vidajugador - 1
             print("bala real, tu vida es: ",vidajugador)
             balascargadorordenadas.pop(0)
+            if balascargadorordenadas == None:
+                recarga()
         elif balascargadorordenadas[0] == "falsa":
-            print("bala falsa") 
-            balascargadorordenadas.pop(0)   
+            print("bala falsa")
+            balascargadorordenadas.pop(0)
+            if balascargadorordenadas == None:
+                recarga()
 
     elif random.choice([1,2]) == 2:
-        print("el apostador se dispara")    #este es el 50/50 de el apostador, si decide disparar al jugador o a el
+        print("\nel apostador se dispara")    #este es el 50/50 de el apostador, si decide disparar al jugador o a el
         if balascargadorordenadas[0] == "real":
-            print("bala real, la vida del apostador es: ",vidaapostador)
+            print("bala real, la vida del apostador es: ",vidaapostador = vidaapostador - 1)
+            balascargadorordenadas.pop(0)
+            if balascargadorordenadas == None:
+                recarga()
+                
+        elif balascargadorordenadas[0] == "falsa":
+            print("bala falsa")   
+            balascargadorordenadas.pop(0)
+            if balascargadorordenadas == None:
+                recarga()
 
 def vidarandom():
     cantidad = [2,3,4]
@@ -92,63 +113,74 @@ print(usuario, "tu vida es ",vidajugador,"y la del apostador", vidaapostador)
 print("\nprimera ronda, hay", balaslistas,"balas en el cargador")
 print("las balas son las siguientes: ",cargass,"cargadas",falsas,"descargadas" )
 
+def recarga():
+ if balascargadorordenadas == 0:
+     balasrandom()
+     cargas()
+     balascargadorordenadas = cargas()
+     print("\nsiguiente cargador\n")
+     print("\nse cargaron", balaslistas,"balas en el cargador")
+     print("las balas son las siguientes: ",cargass,"cargadas",falsas,"descargadas" )
+
 
 def ronda2():
 
  global vidajugador
  global vidaapostador
  global balascargadorordenadas
-
+ rondaextra = None
 
 
  ronda1 = input("\n1)Disparar al apostador\n2)Dispararte\n3)Usar item\n")
  if ronda1 == "1":
-     
+
      print("Disparas al apostador\n")
      if balascargadorordenadas[0] == "real":
          vidaapostador = vidaapostador - 1
          print("bala real")
          print("la vida del apostador es", vidaapostador)
          balascargadorordenadas.pop(0)
+         rondaextra == True
+         if balascargadorordenadas == None:
+             recarga()
 
      elif balascargadorordenadas[0] == "falsa":
          print("bala falsa")
          balascargadorordenadas.pop(0)
-
-     print("turno del apostador")
-     
+         rondaextra == True
+         if balascargadorordenadas == None:
+             recarga()
+        
      coinflipapostador()
-
-
-
-
-
-
-
-
 
 
  elif ronda1 == "2":
      print("Te disparas")
      if balascargadorordenadas[0] == "real":
          vidajugador = vidajugador - 1
-         print("tu vida restante es ", vidajugador)
+         print("bala real, tu vida restante es ", vidajugador)
          balascargadorordenadas.pop(0)
+         rondaextra = True
 
-     elif balascargadorordenadas[0] == "falsa": 
+     elif balascargadorordenadas[0] == "falsa":
          print("bala falsa")
          balascargadorordenadas.pop(0)
+         rondaextra = False
+         print("\nRonda extra\n")
+         if balascargadorordenadas == None:
+             recarga()
 
-     print("turno del apostador")   
+     
+     if rondaextra == True:
+         coinflipapostador()
+     elif coinflipapostador == False:
+         print("Ronda extra")
+ 
 
-     coinflipapostador()  
+
 
 while vidajugador > 0 and vidaapostador > 0:
 
     ronda2()
-
-
-
-
-      
-           
+    
+    
